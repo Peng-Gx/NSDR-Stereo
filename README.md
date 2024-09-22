@@ -1,6 +1,6 @@
 # NSDR-Stereo: Neighborhood-Similarity Guided Disparity Refinement in Lightweight Stereo Matching
 
-##The whole code will be available once the paper is accepted.
+## The whole code will be available once the paper is accepted.
 
 
 # Results on KITTI 2015 and KITTI 2012 leaderboard
