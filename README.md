@@ -33,8 +33,8 @@
 ### Create a virtual environment and activate it.
 
 ```
-conda create -n dsnr python=3.8
-conda activate dsnr
+conda create -n nsdr python=3.8
+conda activate nsdr
 ```
 ### Dependencies
 
@@ -77,7 +77,7 @@ In our setup, the dataset is organized as follows
 ```
 
 ## Train
-Use the following command to train DSNR-Stereo on Scene Flow
+Use the following command to train NSDR-Stereo on Scene Flow
 
 Firstly, train the global disparity initialization network for 20 epochs,
 ```
@@ -95,7 +95,7 @@ python main_train_sf.py --datapath ../SceneFlow --epochs 40 --lrepochs 20,30,35:
     --whole_with_ckpt --loadckpt xxxx/checkpoint_000019.ckpt
 ```
 
-Use the following command to train DSNR-Stereo on KITTI (using pretrained model on Scene Flow)
+Use the following command to train NSDR-Stereo on KITTI (using pretrained model on Scene Flow)
 ```
 python main_train_kitti.py\
     --trainlist filenames/kitti12_15_train_all.txt\
