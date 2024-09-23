@@ -132,7 +132,7 @@ def train_sample(sample,compute_metrics=False):
     elif args.freezen_disp4:
         train_weights=[1,0.3,0,0]
     else:
-        train_weights=[1,0,0,0]
+        train_weights=[1,0.07,0.07,0.23]
 
     for i,disp_est in enumerate(disp_ests[:-1]):
         if disp_est.shape[1]!=disp_gt.shape[1]:
