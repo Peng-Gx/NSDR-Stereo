@@ -22,7 +22,7 @@ import gc
 import cv2
 from datasets import sceneflow_listfile
 
-from models.NSDR import NSDR
+from models.G2L import G2L
 from tqdm import tqdm
 
 import torch
@@ -252,7 +252,7 @@ if __name__ == '__main__':
     TestImgLoader = DataLoader(test_dataset, args.test_batch_size, shuffle=False, num_workers=args.num_workers, drop_last=False)
 
     # model
-    model = NSDR(only_disp4=args.only_disp4, freezen_disp4=args.freezen_disp4)
+    model = G2L(only_disp4=args.only_disp4, freezen_disp4=args.freezen_disp4)
     model = nn.DataParallel(model)
     if torch.cuda.is_available() and args.cuda:
         model.cuda()
