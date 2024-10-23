@@ -20,7 +20,7 @@ import gc
 import cv2
 from datasets import sceneflow_listfile
 
-from models.NSDR import NSDR
+from models.G2L import G2L
 from tqdm import tqdm
 
 from PIL import Image
@@ -255,7 +255,7 @@ if __name__ == '__main__':
 
     parser.add_argument('--test_batch_size', type=int, default=1, help='testing batch size')
     parser.add_argument('--logdir',default='./testlog', help='the directory to save logs and checkpoints')
-    parser.add_argument('--loadckpt', default='pretrained_model/NSDR_sceneflow.ckpt',help='load the weights from a specific checkpoint')
+    parser.add_argument('--loadckpt', default='pretrained_model/G2L_sceneflow.ckpt',help='load the weights from a specific checkpoint')
     parser.add_argument('--seed', type=int, default=42, metavar='S', help='random seed (default: 1)')
     parser.add_argument('--cuda', default=True, type=str, help='use cuda to train the model')
     
@@ -289,7 +289,7 @@ if __name__ == '__main__':
     TestImgLoader = DataLoader(test_dataset, args.test_batch_size, shuffle=False, num_workers=4, drop_last=False)
 
     # model
-    model = NSDR()
+    model = G2L()
     model = nn.DataParallel(model)
     if torch.cuda.is_available() and args.cuda:
         model.cuda()
