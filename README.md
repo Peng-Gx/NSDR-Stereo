@@ -3,14 +3,14 @@
 <br/>
 <br/>
 
-## NSDR-Stereo: Neighborhood-Similarity Guided Disparity Refinement in Lightweight Stereo Matching
+## G2L-Stereo: Global to Local Disparity Two-Stage Real-Time Stereo Matching Network
 
 ## Results on KITTI 2015 and KITTI 2012 leaderboard
 [Leaderboard Link](http://www.cvlibs.net/datasets/kitti/eval_scene_flow.php?benchmark=stereo)
 
 | Method | Scene Flow <br> (EPE) | KITTI 2012 <br> (3-all) | KITTI 2015 <br> (D1-all) | Runtime (ms) |
 |:-:|:-:|:-:|:-:|:-:|
-| NSDR-Stereo | 0.47 | 1.74 % | 1.88 % | 50 |
+| G2L-Stereo | 0.47 | 1.74 % | 1.88 % | 50 |
 | Fast-ACVNet+ | 0.59 | 1.85 % | 2.01 % | 45 |
 | HITNet | - | 1.89 % |1.98 % | 54 |
 | CoEx | 0.69 | 1.93 % | 2.13 % | 33 |
@@ -33,8 +33,8 @@
 ### Create a virtual environment and activate it.
 
 ```
-conda create -n nsdr python=3.8
-conda activate nsdr
+conda create -n g2l python=3.8
+conda activate g2l
 ```
 ### Dependencies
 
@@ -77,7 +77,7 @@ In our setup, the dataset is organized as follows
 ```
 
 ## Train
-Use the following command to train NSDR-Stereo on Scene Flow
+Use the following command to train G2L-Stereo on Scene Flow
 
 Firstly, train the global disparity initialization network for 20 epochs,
 ```
@@ -95,13 +95,13 @@ python main_train_sf.py --datapath ../SceneFlow --epochs 40 --lrepochs 20,30,35:
     --whole_with_ckpt --loadckpt xxxx/checkpoint_000019.ckpt
 ```
 
-Use the following command to train NSDR-Stereo on KITTI (using pretrained model on Scene Flow)
+Use the following command to train G2L-Stereo on KITTI (using pretrained model on Scene Flow)
 ```
 python main_train_kitti.py\
     --trainlist filenames/kitti12_15_train_all.txt\
     --testlist filenames/kitti15_val.txt\
     --epochs 400 --lrepochs 300:10\
-    --whole_with_ckpt --loadckpt pretrained_model/NSDR_sceneflow.ckpt 
+    --whole_with_ckpt --loadckpt pretrained_model/G2L_sceneflow.ckpt 
 ```
 
 ## Test
@@ -109,7 +109,7 @@ python main_train_kitti.py\
 python main_test.py\
     --dataset sceneflow\
     --datapath ../SceneFlow\
-    --loadckpt pretrained_model/NSDR_sceneflow.ckpt\
+    --loadckpt pretrained_model/G2L_sceneflow.ckpt\
     --test_batch_size 4 --logdir ./testlog --stage 0
 ```
 
